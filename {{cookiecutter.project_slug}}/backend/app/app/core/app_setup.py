@@ -7,4 +7,8 @@ from app.core import config
 
 from . import cors
 
+from ..gql_api.view import gql_view
+
 init_db()
+
+app.add_url_rule('/graphql', view_func=gql_view())
