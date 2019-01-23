@@ -4,3 +4,6 @@ services:
     ports:
       - '80:80'
       - '8090:8080'
+  mongodb:
+    ports:
+      - '27017:27017'

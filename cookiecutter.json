@@ -3,9 +3,12 @@
     "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
     "domain_main": "{{cookiecutter.project_slug}}.com",
 
-    "backend_cors_origins": "http://localhost, http://localhost:4200, http://localhost:3000, http://localhost:8080, http://dev.{{cookiecutter.domain_main}}, https://{{cookiecutter.domain_main}}, http://local.dockertoolbox.tiangolo.com, http://localhost.tiangolo.com",
+    "backend_cors_origins": "http://localhost, http://localhost:4200, http://localhost:3000, http://localhost:8080, http://dev.{{cookiecutter.domain_main}}, https://{{cookiecutter.domain_main}}",
 
     "docker_swarm_stack_name_main": "{{cookiecutter.domain_main|replace('.', '-')}}",
+
+    "first_superuser": "admin@{{cookiecutter.domain_main}}",
+    "first_superuser_password": "changethis"
 
     "traefik_constraint_tag": "{{cookiecutter.domain_main}}",
     "traefik_public_network": "traefik-public",

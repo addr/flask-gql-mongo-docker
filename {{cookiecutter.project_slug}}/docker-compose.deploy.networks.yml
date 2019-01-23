@@ -6,5 +6,5 @@ services:
       - default
 
 networks:
-  {{cookiecutter.traefik_public_network}}:
+  traefik-public:
     external: true

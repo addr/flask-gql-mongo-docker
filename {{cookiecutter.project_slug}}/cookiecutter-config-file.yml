@@ -1,14 +1,16 @@
-default_context:
-  project_name: '{{ cookiecutter.project_name }}'
-  project_slug: '{{ cookiecutter.project_slug }}'
-  domain_main: '{{ cookiecutter.domain_main }}'
-  backend_cors_origins: '{{ cookiecutter.backend_cors_origins }}'
-  docker_swarm_stack_name_main: '{{ cookiecutter.docker_swarm_stack_name_main }}'
-  traefik_constraint_tag: '{{ cookiecutter.traefik_constraint_tag }}'
-  traefik_public_network: '{{ cookiecutter.traefik_public_network }}'
-  traefik_public_constraint_tag: '{{ cookiecutter.traefik_public_constraint_tag }}'
-  docker_image_prefix: '{{ cookiecutter.docker_image_prefix }}'
-  docker_image_backend: '{{ cookiecutter.docker_image_backend }}'
-  docker_image_frontend: '{{ cookiecutter.docker_image_frontend }}'
-  _copy_without_render: [frontend/src/**/*.html, frontend/src/**/*.vue, frontend/node_modules/*]
-  _template: ./
+  default_context:
+    project_name: '{{ cookiecutter.project_name }}'
+    project_slug: '{{ cookiecutter.project_slug }}'
+    domain_main: '{{ cookiecutter.domain_main }}'
+    backend_cors_origins: '{{ cookiecutter.backend_cors_origins }}'
+    docker_swarm_stack_name_main: '{{ cookiecutter.docker_swarm_stack_name_main }}'
+    first_superuser: '{{ cookiecutter.first_superuser }}'
+    first_superuser_password: '{{ cookiecutter.first_superuser_password }}'
+    traefik_constraint_tag: '{{ cookiecutter.traefik_constraint_tag }}'
+    traefik_public_network: '{{ cookiecutter.traefik_public_network }}'
+    traefik_public_constraint_tag: '{{ cookiecutter.traefik_public_constraint_tag }}'
+    docker_image_prefix: '{{ cookiecutter.docker_image_prefix }}'
+    docker_image_backend: '{{ cookiecutter.docker_image_backend }}'
+    docker_image_frontend: '{{ cookiecutter.docker_image_frontend }}'
+    _copy_without_render: [frontend/src/**/*.html, frontend/src/**/*.vue, frontend/node_modules/*]
+    _template: ./
