@@ -8,7 +8,7 @@
     "docker_swarm_stack_name_main": "{{cookiecutter.domain_main|replace('.', '-')}}",
 
     "first_superuser": "admin@{{cookiecutter.domain_main}}",
-    "first_superuser_password": "changethis"
+    "first_superuser_password": "changethis",
 
     "traefik_constraint_tag": "{{cookiecutter.domain_main}}",
     "traefik_public_network": "traefik-public",
