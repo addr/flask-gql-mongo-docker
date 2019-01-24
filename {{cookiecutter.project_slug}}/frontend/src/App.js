@@ -39,6 +39,7 @@ class App extends Component {
           create={UserCreate}
           edit={UserEdit}
         />
+        <Resource name="Role" />
       </Admin>
     );
   }
