@@ -1,26 +1,43 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Admin, Resource } from "react-admin";
+
+import logo from "./logo.svg";
+import "./App.css";
+import { UserList, UserEdit, UserCreate } from "./users";
+
+import dataProvider from "./dataProvider";
+import authProvider from "./authProvider";
 
 class App extends Component {
+  state = { dataProvider: null };
+
+  componentDidMount() {
+    dataProvider().then(dataProvider => this.setState({ dataProvider }));
+  }
+
   render() {
+    const { dataProvider } = this.state;
+
+    if (!dataProvider) {
+      return (
+        <div className="loader-container">
+          <div className="loader">Loading...</div>
+        </div>
+      );
+    }
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Admin
+        title="My React Admin App"
+        dataProvider={dataProvider}
+        authProvider={authProvider}
+      >
+        <Resource
+          name="User"
+          list={UserList}
+          create={UserCreate}
+          edit={UserEdit}
+        />
+      </Admin>
     );
   }
 }
