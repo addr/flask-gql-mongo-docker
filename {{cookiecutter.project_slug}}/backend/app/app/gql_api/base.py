@@ -14,7 +14,6 @@ def default_model_resolver(self, info, id):
     return Node.get_node_from_global_id(info, id)
 
 
-@jwt_required
 def default_query_resolver(type,
                            page=None,
                            perPage=10,
@@ -22,9 +21,6 @@ def default_query_resolver(type,
                            sortOrder=None,
                            filter=None,
                            **kwargs):
-    current_user = get_current_user()
-    if not current_user:
-        abort(400, "Could not authenticate user with provided token")
     qs = type.objects.all()
     if sortField is not None and sortOrder is not None:
         sort_field = "-" + sortField if sortOrder != 'ASC' else sortField
