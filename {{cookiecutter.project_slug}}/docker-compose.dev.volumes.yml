@@ -3,3 +3,9 @@ services:
   backend:
     volumes:
       - ./backend/app:/app
+  celeryworker:
+    volumes:
+      - ./backend/app:/app
+  celerymonitor:
+    volumes:
+      - ./backend/app:/app

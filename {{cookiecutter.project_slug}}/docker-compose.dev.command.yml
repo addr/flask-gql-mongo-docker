@@ -9,5 +9,10 @@ services:
       --accessLog \
       --web
   backend:
-    command: bash -c "while true; do sleep 1; done"  # Infinite loop to keep container live doing nothing
+    # command: bash -c "while true; do sleep 1; done"  # Infinite loop to keep container live doing nothing
     command: bash -c "flask run --host=0.0.0.0 --port=80"
+  celeryworker:
+    command: bash -c "python /app/app/worker/start_worker_dev.py" # auto-reloading celery
+  celerymonitor:
+    command: bash -c "python /app/app/monitor/start_monitor_dev.py" # auto-reloading celery
+
