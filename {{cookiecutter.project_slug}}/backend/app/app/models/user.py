@@ -1,6 +1,7 @@
 from mongoengine import Document
 from mongoengine.fields import (StringField, EmailField, ListField,
                                 ReferenceField, BooleanField)
+from app.core.security import verify_password
 
 
 class User(Document):
@@ -11,6 +12,10 @@ class User(Document):
     roles = ListField(ReferenceField('Role'))
     password = StringField(max_length=255)
     active = BooleanField()
+
+    def authenticate_user(self, password):
+        if not verify_password(password, self.password):
+            return False
 
     def __unicode__(self):
         return "{first_name} {last_name}".format(

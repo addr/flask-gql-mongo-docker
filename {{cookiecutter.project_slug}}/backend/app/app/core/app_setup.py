@@ -6,8 +6,10 @@ from app.db.init_db import init_db
 from app.core import config
 
 from . import cors
-
+from .jwt import jwt
 from ..gql_api.view import gql_view
+
+app.config["SECRET_KEY"] = config.SECRET_KEY
 
 init_db()
 

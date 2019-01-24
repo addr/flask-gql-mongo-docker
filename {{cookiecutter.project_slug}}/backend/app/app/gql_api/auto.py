@@ -56,7 +56,7 @@ def build_base_classes(operationName, operationModule, operationBase, clsName):
                 logger.info('wat?')
                 logger.debug(current_directory)
         except ImportError:  # ModuleNotFoundError?
-            if directory in {'list_metadata', 'role'}:
+            if directory in {'list_metadata', 'role', 'auth'}:
                 pass
             else:
                 raise

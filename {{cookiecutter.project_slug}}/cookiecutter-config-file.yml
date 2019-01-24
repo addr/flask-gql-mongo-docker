@@ -4,6 +4,7 @@
     domain_main: '{{ cookiecutter.domain_main }}'
     backend_cors_origins: '{{ cookiecutter.backend_cors_origins }}'
     docker_swarm_stack_name_main: '{{ cookiecutter.docker_swarm_stack_name_main }}'
+    secret_key: '{{ cookiecutter.secret_key }}'
     first_superuser: '{{ cookiecutter.first_superuser }}'
     first_superuser_password: '{{ cookiecutter.first_superuser_password }}'
     traefik_constraint_tag: '{{ cookiecutter.traefik_constraint_tag }}'

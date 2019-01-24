@@ -1,12 +1,14 @@
 # Import installed packages
 import graphene
+from flask import abort
 
 # Import app code
 from app.gql_api.base import BaseMutation, default_model_resolver
 from .types import User
 from app.models.user import User as UserModel
-from app.db.users import create_or_get_user
+from app.db.users import get_user, create_user
 from app.db.roles import create_or_get_role
+from app.core.security import get_password_hash
 
 
 class CreateUser(graphene.Mutation):
@@ -25,6 +27,9 @@ class CreateUser(graphene.Mutation):
     Output = User
 
     def mutate(self, info, **kwargs):
+        user = get_user(kwargs['email'])
+        if user is not None:
+            abort(400, "User already exists")
         role_ids = kwargs.get('role_ids', None)
         if role_ids is None:
             roles = [create_or_get_role("user")]
@@ -34,8 +39,7 @@ class CreateUser(graphene.Mutation):
                 for id in role_ids
             ]
         kwargs['roles'] = roles
-        user = UserModel(**kwargs)
-        user.save()
+        user = create_user(**kwargs)
 
         return user
 
@@ -56,6 +60,9 @@ class UpdateUser(graphene.Mutation):
 
     def mutate(self, info, id, **kwargs):
         user = default_model_resolver(self, info=info, id=id)
+        pw = kwargs.get('password', None)
+        if pw is not None:
+            kwargs['password'] = get_password_hash(pw)
         user.update(**kwargs)
         user.save()
 
